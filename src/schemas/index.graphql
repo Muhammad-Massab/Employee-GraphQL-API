@@ -1,0 +1,73 @@
+type Attendance {
+  date: String!
+  status: String!
+}
+
+type Employee {
+  id: ID!
+  name: String!
+  age: Int!
+  class: String!
+  subjects: [String!]
+  attendance: [Attendance!]
+  role: String!
+  email: String!
+}
+
+input AttendanceInput {
+  date: String!
+  status: String!
+}
+
+input EmployeeInput {
+  name: String!
+  age: Int!
+  class: String!
+  subjects: [String!]
+  attendance: [AttendanceInput!]
+  email: String!
+  password: String!
+}
+
+input EmployeeUpdateInput {
+  name: String
+  age: Int
+  class: String
+  subjects: [String!]
+  attendance: [AttendanceInput!]
+}
+
+type Query {
+  employees(
+    filter: String
+    class: String
+    ageMin: Int
+    ageMax: Int
+    page: Int = 1
+    limit: Int = 10
+    sortBy: String = "name"
+    sortOrder: String = "asc"
+  ): EmployeePagination!
+  employee(id: ID!): Employee
+  me: Employee
+}
+
+type EmployeePagination {
+  employees: [Employee!]!
+  totalCount: Int!
+  totalPages: Int!
+  currentPage: Int!
+}
+
+type Mutation {
+  login(email: String!, password: String!): AuthPayload!
+  addEmployee(input: EmployeeInput!): Employee!
+  updateEmployee(id: ID!, input: EmployeeUpdateInput!): Employee!
+  deleteEmployee(id: ID!): Boolean!
+  markAttendance(employeeId: ID!, date: String!, status: String!): Attendance!
+}
+
+type AuthPayload {
+  token: String!
+  employee: Employee!
+}

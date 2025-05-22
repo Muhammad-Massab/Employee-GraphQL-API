@@ -1,0 +1,32 @@
+{
+  "name": "graphql-auth",
+  "version": "1.0.0",
+  "description": "A simple GraphQL server with authentication using JWT and MongoDB.",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "bcryptjs": "^3.0.2",
+    "compression": "^1.8.0",
+    "cors": "^2.8.5",
+    "dataloader": "^2.2.3",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "graphql-depth-limit": "^1.1.0",
+    "graphql-validation-complexity": "^0.4.2",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.0",
+    "node-cache": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.8.0",
+    "@types/jsonwebtoken": "^9.0.9",
+    "nodemon": "^3.1.10"
+  }
+}
